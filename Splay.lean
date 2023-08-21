@@ -14,7 +14,7 @@ open SplayTree
 
 set_option maxHeartbeats 0
 lemma is_key_in_iff_splay (elem key : Nat) (t : SplayTree α) :
-  is_key_in elem t ↔ is_key_in elem (splay key t) := by
+  is_key_in elem (splay key t) ↔ is_key_in elem t := by
     cases t 
     . rfl
     case node AB k v CD =>

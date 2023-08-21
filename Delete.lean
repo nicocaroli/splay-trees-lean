@@ -61,10 +61,8 @@ bst_property t → is_key_in key (delete key t) = false := by
     split
     . by_contra; aesop
     . rename_i key_is; simp at key_is; cases key_is
-      simp at is_in_splay_t
-      simp [is_in_splay_t] at is_key_in_iff_splay_t
       simp [bst_property] at splay_bst_property_t
-      have h:= join_keys l r splay_bst_property_t.1 splay_bst_property_t.2.1 key (join_assumption_proof splay_bst_property_t.2.2)
+      have h := join_keys l r splay_bst_property_t.1 splay_bst_property_t.2.1 key (join_assumption_proof splay_bst_property_t.2.2)
       by_contra c; simp_all [forall_keys];
       cases c
       . have h1 := splay_bst_property_t.2.2.1 key ; simp_all 

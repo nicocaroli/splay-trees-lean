@@ -183,16 +183,12 @@ bst_property t → bst_property (insert key value t) := by
       by_contra; simp_all 
 
 
-lemma insert_keys_presence (t : SplayTree α) (key: Nat) (value: α)(bst_property_t: bst_property t) :
- ∀ k, is_key_in k t ∨ k = key ↔ is_key_in k (insert key value t) := by
+lemma insert_keys_presence (t : SplayTree α) (key: Nat) (value: α) :
+ ∀ k, is_key_in k (insert key value t) ↔ is_key_in k t ∨ k = key := by
   intro k'
-  have is_in_splay_t := is_in_splay key t bst_property_t
   have is_key_in_iff_splay_t := is_key_in_iff_splay k' key t
   unfold SplayTree.insert
-  split 
-  . simp[is_key_in] at *; aesop
-  case h_2 ls ks vs rs splay_match => 
-    aesop (add norm simp [is_key_in, is_root])
+  aesop (add norm simp [is_key_in, is_root])
 
 lemma is_root_insert (key : Nat) (value: α) (t : SplayTree α) (bst_property_t : bst_property t) :
 is_root key (insert key value t) := by

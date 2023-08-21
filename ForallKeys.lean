@@ -4,7 +4,6 @@ namespace ForallKeys
 
 open SplayTree
 
-
 /- Lemma to prove the correctnes of is_key_in with Sets  -/
 lemma is_key_in_correctness (t : SplayTree α)  (key : Nat) :
  key ∈ (all_keys_set t) ↔ is_key_in key t := by

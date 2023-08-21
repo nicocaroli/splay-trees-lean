@@ -36,7 +36,6 @@ splay_max t = node ls ks vs rs →
     have splay_max_forall_keys_subtree := splay_max_forall_keys b CD (.<.)
     aesop (add norm simp [is_key_in, bst_property])
 
-
 lemma join_bst_property (t1 t2 : SplayTree α) (bst_property_t1 : bst_property t1) (bst_property_t2 : bst_property t2)
  (t1_lt_t2:  ∀ (x y: Nat), (is_key_in x t1) ∧ (is_key_in y t2) →  x < y) :
   bst_property (join t1 t2) := by
